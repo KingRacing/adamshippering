@@ -1,2 +1,2 @@
 ### Eiko Shippering
-A telegram bot for randomizing couples in groups
+## Bot Telegram untuk mengacak pasangan dalam obrolan
