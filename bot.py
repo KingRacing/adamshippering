@@ -7,7 +7,6 @@ import schedule
 import time
 import threading
 import redis
-from rq import Worker, Queue, Connection
 from telegram.ext import Updater, CommandHandler, CallbackContext, Filters
 from telegram import Update
 from dotenv import load_dotenv
