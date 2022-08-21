@@ -25,7 +25,7 @@ deadline = datetime(datetime.today().year, datetime.today().month, datetime.toda
 VICTORY = 30
 victory_text = ''
 redis_server = redis.from_url(os.environ.get('redis-17314.c270.us-east-1-3.ec2.cloud.redislabs.com:17314'))
-PORT = int(.environ.get('PORT', 17314))
+PORT = int(os.environ.get('PORT', 17314))
 
 
 def setup_shippering_db(update: Update, context: CallbackContext):
