@@ -1,4 +1,4 @@
-python-telegram-bot==12.8
+python-telegram-bot==13.13
 python-dotenv
-schedule==0.6.0
-redis==3.5.3
+schedule==1.1.0
+redis==4.3.4
