@@ -56,13 +56,13 @@ def victory(update: Update, context: CallbackContext, winner1, winner2=None):
 
     text = f'<a href="tg://user?id={winner1}">{first_name1} {last_name1}</a> ' if last_name1 else f'<a href="tg://user?id={winner1}">{first_name1}</a> '
     if winner2:
-        text += f'e <a href="tg://user?id={winner2}">{first_name2} {last_name2}</a> hanno raggiunto {VICTORY} ship. \nCongratulazioni 👋' \
+        text += f'e <a href="tg://user?id={winner2}">{first_name2} {last_name2}</a> mendapatkan {VICTORY} pasangan. \nSelamat 👋' \
             if last_name2 else f'e <a href="tg://user?id={winner2}">{first_name2}</a>' \
-                                f'hanno raggiunto {VICTORY} ship. \nCongratulazioni 👋'
+                                f'Telah dapat {VICTORY} pasangan. \nSelamat 👋'
     else:
-        text += f'ha raggiunto {VICTORY} ship. \nCongratulazioni 👋'
+        text += f'Mendapatkan {VICTORY} Pasangan. \nSelamat 👋'
 
-    text += 'Se vuoi ricominciare usa /reset'
+    text += 'Jika Anda ingin memulai dari awal, gunakan /reset'
 
     return text
 
@@ -72,21 +72,21 @@ def start(update: Update, context: CallbackContext):
     setup_shippering_db(update, context)
 
     logging.info(update.effective_chat.id)
-    text = '😄 Hello! SHIPPERANG is a bot that will choose a couple of the day in your chat.\n\n ' \
-           'Use /help for more info.'
+    text = '😄 Halo! Eiko Shippering adalah bot yang akan memilih pasangan dalam obrolan Anda.\n\n ' \
+            'Gunakan /help untuk info lebih lanjut.'
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 
 def help(update: Update, context: CallbackContext):
-    text = '💕 SHIPPERANG is a bot that will choose a couple of the day in your chat. ' \
-           'Everyone who writes a message in your chat will be added to the list of candidates ' \
-           'for a couple of the day. Add this bot to your chat ' \
-           'and wait for it to gather enough candidates before sending shipping command.\n' \
-           '/help: this message\n' \
-           '/shipping: picks a couple of the day\n' \
-           '/top: ship ranking\n' \
-           '/last: last couples picked\n' \
-           '/reset: delete every couple'
+    text = '💕 Eiko shippering adalah bot yang akan memilih pasangan dalam obrolan Anda. ' \
+           'Setiap orang yang menulis pesan di chat Anda akan ditambahkan ke daftar kandidat' \
+           'untuk beberapa hari. Tambahkan bot ini ke obrolan Anda ' \
+           'dan tunggu sampai mengumpulkan kandidat yang cukup sebelum mengirim perintah.\n' \
+           '/help: pesan ini\n' \
+           '/shipping: Memilih Pasangan secara acak\n' \
+           '/top: Rank Pasangan\n' \
+           '/last: Pasangan terakhir yang dipilih\n' \
+           '/reset: menghapus setiap pasangan'
     context.bot.send_message(chat_id=update.effective_chat.id, text=text, parse_mode='HTML')
 
 
@@ -143,17 +143,17 @@ def shipping(update: Update, context: CallbackContext):
         # if the ship for today is picked, only need to pop from the stack
         user_id_shipped2 = counters['last_couple'][-1]
         user_id_shipped1 = counters['last_couple'][-2]
-    logging.info('PASSO DI QUI')
+    logging.info('LANGKAH DI SINI')
     # find out how much needs to be waited to ship again
-    logging.info('DEADLINE CORRENTE')
+    logging.info('BATAS WAKTU SAAT INI')
     logging.info(str(deadline.date()))
     logging.info(str(deadline.time()))
 
-    logging.info('DEADLINE E SCHEDULE DOVREBBERO COINCIDERE')
+    logging.info('DEADLINE DAN JADWAL HARUS BERSAMAAN')
     logging.info(str(schedule.next_run()))
     now = datetime.utcnow()
 
-    logging.info('ADESSO')
+    logging.info('SEKARANG')
     logging.info(str(now.date()))
     logging.info(str(now.time()))
 
@@ -173,7 +173,7 @@ def shipping(update: Update, context: CallbackContext):
     text = ''
     if victory_text:
         text += victory_text + '\n\n'
-    text += 'La coppia del giorno:\n\n' if counters['shippable'] else 'La coppia del giorno è già stata scelta:\n\n'
+    text += 'Pasangan hari ini:\n\n' if counters['shippable'] else 'Pasangan hari ini telah dipilih:\n\n'
     if counters['shippable']:
         text += f'<a href="tg://user?id={user_id_shipped1}">{first_name1} {last_name1}</a> ' if last_name1 else f'<a href="tg://user?id={user_id_shipped1}">{first_name1}</a>'
         text += f'+ <a href="tg://user?id={user_id_shipped2}">{first_name2} {last_name2}</a> = ❤\n' if last_name2 else f'+ <a href="tg://user?id={user_id_shipped2}">{first_name2}</a> = ❤\n'
@@ -181,7 +181,7 @@ def shipping(update: Update, context: CallbackContext):
         text += f'{first_name1} {last_name1} ' if last_name1 else f'{first_name1}'
         text += f'+ {first_name2} {last_name2} = ❤\n' if last_name2 else f'+ {first_name2} = ❤\n'
 
-    text += f'La nuova coppia del giorno potrà essere scelta tra {hours} ore, {minutes} minuti e {seconds} secondi'
+    text += f'Pasangan baru hari ini dapat dipilih dari {hours} , {minutes} minuti e {seconds} secondi'
 
     counters['shippable'] = False
     # write updates
