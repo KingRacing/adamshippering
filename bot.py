@@ -82,7 +82,7 @@ def help(update: Update, context: CallbackContext):
            'Setiap orang yang menulis pesan di chat Anda akan ditambahkan ke daftar kandidat' \
            'untuk beberapa hari. Tambahkan bot ini ke obrolan Anda ' \
            'dan tunggu sampai mengumpulkan kandidat yang cukup sebelum mengirim perintah.\n' \
-           '/help: pesan ini\n' \
+           '/chelp: pesan ini\n' \
            '/shipping: Memilih Pasangan secara acak\n' \
            '/top: Rank Pasangan\n' \
            '/last: Pasangan terakhir yang dipilih\n' \
@@ -181,7 +181,7 @@ def shipping(update: Update, context: CallbackContext):
         text += f'{first_name1} {last_name1} ' if last_name1 else f'{first_name1}'
         text += f'+ {first_name2} {last_name2} = ❤\n' if last_name2 else f'+ {first_name2} = ❤\n'
 
-    text += f'Pasangan baru hari ini dapat dipilih dari {hours} , {minutes} minuti e {seconds} secondi'
+    text += f'Pasangan baru hari ini dapat dipilih dari {hours} jam, {minutes} menit {seconds} detik'
 
     counters['shippable'] = False
     # write updates
@@ -192,7 +192,7 @@ def shipping(update: Update, context: CallbackContext):
 def last_ship(update: Update, context: CallbackContext):
     setup_shippering_db(update, context)
 
-    text = 'Le coppie scelte negli ultimi giorni:\n\n'
+    text = 'Pasangan yang dipilih dalam beberapa hari terakhir:\n\n'
 
     counters = redis_server.get(str(update.effective_chat.id))
     counters = json.loads(counters)
@@ -219,7 +219,7 @@ def last_ship(update: Update, context: CallbackContext):
 def top_ship(update: Update, context: CallbackContext):
     setup_shippering_db(update, context)
 
-    text = 'Top lovers (coloro scelti il maggior numero di volte):\n\n'
+    text = 'Top Pasangan (yang paling banyak dipilih):\n\n'
 
     counters = redis_server.get(str(update.effective_chat.id))
     counters = json.loads(counters)
@@ -254,7 +254,7 @@ def reset(update: Update, context: CallbackContext):
     setup_shippering_db(update, context)
 
     restart_counter(update)
-    context.bot.send_message(chat_id=update.effective_chat.id, text='Reset completato', parse_mode='HTML')
+    context.bot.send_message(chat_id=update.effective_chat.id, text='Reset Berhasil', parse_mode='HTML')
 
 
 def callback_shipping(chat_id):
@@ -292,7 +292,7 @@ def main():
 
     dispatcher = updater.dispatcher
     start_handler = CommandHandler('start', start)
-    help_handler = CommandHandler('help', help)
+    help_handler = CommandHandler('chelp', help)
     ship_handler = CommandHandler('shipping', shipping, Filters.group)
     last_ship_handler = CommandHandler('last', last_ship, Filters.group)
     top_ship_handler = CommandHandler('top', top_ship, Filters.group)
