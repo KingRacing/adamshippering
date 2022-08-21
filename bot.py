@@ -17,13 +17,13 @@ load_dotenv()
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-TOKEN = os.getenv('5343918157:AAHZX6BQmGBi662Ua38Y-hPK1EUe7_Vn-wI')
+TOKEN = os.getenv('5478645762:AAH4pRIpRCA6ky2ZoF-VeFO5cV6k28CAcj8')
 
 
 deadline = datetime(datetime.today().year, datetime.today().month, datetime.today().day, hour=14)
 VICTORY = 30
 victory_text = ''
-redis_server = redis.from_url(os.getenv('redis-17247.c44.us-east-1-2.ec2.cloud.redislabs.com:17247'))
+redis_server = redis.from_url(os.getenv('redis-17314.c270.us-east-1-3.ec2.cloud.redislabs.com:17314'))
 PORT = int(os.environ.get('PORT', 5000))
 
 
