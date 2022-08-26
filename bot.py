@@ -25,7 +25,7 @@ VICTORY = 30
 victory_text = ''
 
 listen = ['default']
-redis_url = os.strip('redis-17314.c270.us-east-1-3.ec2.cloud.redislabs.com:17314', 'redis://localhost:17314')
+redis_url = os.getenv('redis-17314.c270.us-east-1-3.ec2.cloud.redislabs.com:17314', 'redis://localhost:17314')
 if __name__ == '__main__':
     print(f"redis url: {redis_url}")
     with Connection(redis.from_url(redis_url)):
