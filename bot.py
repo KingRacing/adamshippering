@@ -308,7 +308,7 @@ def main():
     dispatcher.add_handler(reset_handler)
 
     updater.start_webhook(listen="0.0.0.0",
-                          port=int(PORT),
+                          port="5000",
                           url_path=TOKEN)
     updater.bot.setWebhook('https://pasang12.herokuapp.com/' + TOKEN)
 
