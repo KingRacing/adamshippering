@@ -290,7 +290,7 @@ def run_continuously(interval=1):
 
 def main():
 
-    updater = Updater(token=TOKEN, use_context=True)
+    updater = Updater(token='5478645762:AAH4pRIpRCA6ky2ZoF-VeFO5cV6k28CAcj8', use_context=True)
 
     dispatcher = updater.dispatcher
     start_handler = CommandHandler('start', start)
