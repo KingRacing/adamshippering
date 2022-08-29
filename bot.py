@@ -310,9 +310,9 @@ def main():
     updater.start_webhook(listen="0.0.0.0",
                           port=int(PORT),
                           url_path=TOKEN)
-    updater.bot.setWebhook('https://shipperang.herokuapp.com/' + TOKEN)
+    updater.bot.setWebhook('https://pasang12.herokuapp.com/' + TOKEN)
 
-    schedule.every().day.at("14:00").do(callback_shipping, -1001257793212)
+    schedule.every().day.at("14:00").do(callback_shipping, -1001188937737)
     run_continuously()
 
     updater.idle()
