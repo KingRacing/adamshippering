@@ -17,7 +17,7 @@ load_dotenv()
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-BOT_TOKEN = os.getenv('5478645762:AAH4pRIpRCA6ky2ZoF-VeFO5cV6k28CAcj8')
+BOT_TOKEN = os.getenv('5478645762:AAEvp1karVNtV5DJbOcR_3Jb_uxm5mSstVA')
 
 
 deadline = datetime(datetime.today().year, datetime.today().month, datetime.today().day, hour=14)
@@ -290,7 +290,7 @@ def run_continuously(interval=1):
 
 def main():
 
-    updater = Updater(BOT_TOKEN, use_context=True)
+    updater = Updater(token="5478645762:AAEvp1karVNtV5DJbOcR_3Jb_uxm5mSstVA", use_context=True)
 
     dispatcher = updater.dispatcher
     start_handler = CommandHandler('start', start)
