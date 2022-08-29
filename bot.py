@@ -17,7 +17,7 @@ load_dotenv()
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-TOKEN = os.getenv('5478645762:AAH4pRIpRCA6ky2ZoF-VeFO5cV6k28CAcj8')
+BOT_TOKEN = os.getenv('5478645762:AAH4pRIpRCA6ky2ZoF-VeFO5cV6k28CAcj8')
 
 
 deadline = datetime(datetime.today().year, datetime.today().month, datetime.today().day, hour=14)
@@ -290,7 +290,7 @@ def run_continuously(interval=1):
 
 def main():
 
-    updater = Updater(API_KEY, use_context=True)
+    updater = Updater(BOT_TOKEN, use_context=True)
 
     dispatcher = updater.dispatcher
     start_handler = CommandHandler('start', start)
@@ -309,7 +309,7 @@ def main():
 
     updater.start_webhook(listen="0.0.0.0",
                           port="5000",
-                          url_path=TOKEN)
+                          url_path=BOT_TOKEN)
     updater.bot.setWebhook('https://pasang12.herokuapp.com/' + TOKEN)
 
     schedule.every().day.at("14:00").do(callback_shipping, -1001188937737)
