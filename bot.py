@@ -14,9 +14,6 @@ from datetime import datetime, timedelta
 
 load_dotenv()
 
-lambda job: job and job.startswith('Shippering')
-lambda job: job.startswith('Shippering') if job else False
-
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
@@ -313,13 +310,14 @@ def main():
     updater.start_webhook(listen="0.0.0.0",
                           port="5000",
                           url_path=BOT_TOKEN)
-    updater.bot.setWebhook('https://pasang12.herokuapp.com/' + TOKEN)
+    updater.bot.setWebhook('https://shipperang.herokuapp.com' + TOKEN)
 
     schedule.every().day.at("14:00").do(callback_shipping, -1001188937737)
     run_continuously()
 
     updater.idle()
-
+    
+lambda job: job and job.startswith('Shippering')
 
 if __name__ == '__main__':
     main()
