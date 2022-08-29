@@ -14,6 +14,10 @@ from datetime import datetime, timedelta
 
 load_dotenv()
 
+lambda job: job and job.startswith('Shippering')
+lambda job: job.startswith('Shippering') 
+       if job else False
+
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
